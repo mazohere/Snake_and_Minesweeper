@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Tilemap))]
 public class Board : MonoBehaviour
@@ -19,6 +22,7 @@ public class Board : MonoBehaviour
     public Tile tileNum6;
     public Tile tileNum7;
     public Tile tileNum8;
+    public Text timer;
 
     private void Awake()
     {

@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     public int width = 16;
     public int height = 16;
     public int mineCount = 32;
+    public int flagCount;
 
     private Board board;
     private Cell[,] state;
     private bool gameOver;
     private float timer;
+    public Text flagsRemaining;
+    public Text timeDisplay;
+    public Text bestTime;
+    public Text gameOverBestTime;
+    public Text gameWinBestTime;
+    public Text gameWinTime;
+    public GameObject gameOverVisuals;
+    public GameObject pauseVisuals;
+    public GameObject gameWinVisuals;
+    private bool pause = false;
 
     private void OnValidate()
     {
@@ -32,6 +44,11 @@ public class Game : MonoBehaviour
     private void NewGame()
     {
         timer = 0;
+        flagCount = mineCount;
+        flagsRemaining.text = flagCount.ToString();
+        bestTime.text = PlayerPrefs.GetString("MinesweeperBestTime");
+        gameOverVisuals.SetActive(false);
+        gameWinVisuals.SetActive(false);
 
         state = new Cell[width, height];
         gameOver = false;
@@ -143,11 +160,25 @@ public class Game : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             NewGame();
+        } else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pause)
+            {
+                pause = true;
+                pauseVisuals.SetActive(true);
+            } else if (pause)
+            {
+                ContinueButton();
+            }
         }
 
-        if (!gameOver)
+        if (!gameOver && !pause)
         {
             timer += Time.deltaTime;
+
+            float minutes = Mathf.FloorToInt(timer / 60);
+            float seconds = Mathf.FloorToInt(timer % 60);
+            timeDisplay.text = (string.Format("{0:00}:{1:00}", minutes, seconds));
             
             if (Input.GetMouseButtonDown(1))
             {
@@ -175,6 +206,9 @@ public class Game : MonoBehaviour
         cell.flagged = !cell.flagged;
         state[cellPosition.x, cellPosition.y] = cell;
         board.Draw(state);
+        flagsRemaining.text = (flagCount - 1).ToString();
+        flagCount--;
+        
     }
 
     private void Reveal()
@@ -202,11 +236,10 @@ public class Game : MonoBehaviour
     {
         Debug.Log("Game Over!");
         gameOver = true;
-        
-        float minutes = Mathf.FloorToInt(timer / 60);
-        float seconds = Mathf.FloorToInt(timer % 60);
-        print("time: " + string.Format("{0:00}:{1:00}", minutes, seconds));
 
+        gameOverVisuals.SetActive(true);
+        gameOverBestTime.text = PlayerPrefs.GetString("MinesweeperBestTime");
+        
         cell.revealed = true;
         cell.exploded = true;
         state[cell.position.x, cell.position.y] = cell;
@@ -263,7 +296,19 @@ public class Game : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(timer / 60);
         float seconds = Mathf.FloorToInt(timer % 60);
-        print("time: " + string.Format("{0:00}:{1:00}", minutes, seconds));
+        string time = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        if (PlayerPrefs.GetFloat("MinesweeperBestTimeTechnical") > timer || PlayerPrefs.GetFloat("MinesweeperBestTimeTechnical") == 0f)
+        {
+            PlayerPrefs.SetFloat("MinesweeperBestTimeTechnical", timer);
+            PlayerPrefs.SetString("MinesweeperBestTime", time);
+            bestTime.text = PlayerPrefs.GetString("MinesweeperBestTime");
+        }
+
+        gameWinVisuals.SetActive(true);
+        gameWinTime.text = time;
+        gameWinBestTime.text = PlayerPrefs.GetString("MinesweeperBestTime");
+
 
         for (int x = 0; x < width; x++)
         {
@@ -278,8 +323,6 @@ public class Game : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     private Cell GetCell(int x, int y)
@@ -296,5 +339,27 @@ public class Game : MonoBehaviour
     private bool IsValid(int x, int y)
     {
         return  x >= 0 && x < width && y >= 0 && y < height;
+    }
+
+    public void TryAgainButton()
+    {
+        NewGame();
+    }
+
+    public void BackToMenuButton()
+    {
+        gameOverVisuals.SetActive(false);
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ContinueButton()
+    {
+        pause = false;
+        pauseVisuals.SetActive(false);
+    }
+
+    public void QuitGameButton()
+    {
+        Application.Quit();
     }
 }
