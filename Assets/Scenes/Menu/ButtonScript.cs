@@ -26,4 +26,9 @@ public class ButtonScript : MonoBehaviour
         PlayerPrefs.SetString("MinesweeperBestTime", "00:00");
         PlayerPrefs.SetFloat("MinesweeperBestTimeTechnical", 0f);
     }
+
+    public void OnQuitButtonClick()
+    {
+        Application.Quit();
+    }
 }
