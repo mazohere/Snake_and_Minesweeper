@@ -762,4 +762,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu/Menu.unity
   - Assets/Scenes/Snake/Snake.unity
   - Assets/Scenes/Minesweeper/Minesweeper.unity
-  playerPath: D:/Projects/SDDprojects/Snake_and_Minesweeper/Builds/Windows/x86/Snake_and_Minesweeperx86/Snake_and_Minesweeper.exe
+  playerPath: D:/Projects/SDDprojects/Snake_and_Minesweeper/Builds/Windows/Snake_and_Minesweeperx86/Snake_and_Minesweeper.exe

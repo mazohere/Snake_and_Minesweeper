@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Menu/Menu.unity
+- path: Assets/Scenes/Snake/Snake.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

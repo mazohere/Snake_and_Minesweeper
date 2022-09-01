@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
+
+    // public functions for loading snake and minesweeper, reseting each of the scores, and quiting the application. They have all been set to their corresponding buttons in the unity engine.
     public void OnSnakeButtonClick()
     {
         SceneManager.LoadScene("Snake");

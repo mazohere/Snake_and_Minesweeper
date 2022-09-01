@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 86
+  controlID: 87
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Menu
+    - Assets/Scenes/Snake
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Menu
+  - Assets/Scenes/Snake
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\SDDprojects\Snake_and_Minesweeper
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c6420000
-    m_LastClickedID: 17094
-    m_ExpandedIDs: 00000000bc420000c2420000c4420000c842000000ca9a3b
+    m_SelectedIDs: d2420000
+    m_LastClickedID: 17106
+    m_ExpandedIDs: 00000000c6420000cc420000d242000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +360,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc420000
+    m_ExpandedIDs: 00000000c6420000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -481,9 +481,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 22c4feff3ac4fefff4c4fefffcc4feff00c5feffb0c5feff54c7feffa8c7feffc0c7feffc2c7feffc6c7feffcac7fefffac7feffc0c9feff16cafeff2ecafeffe8cafefff0cafefff4cafeffe0cefeff1ad0feff0cd1feff58d1feff78d1feffc8d1feffe0d1feffe2d1feffe6d1feffead1feff9ad3fefff0d6feffeedcfeffa8defeff24dffeff3cdffefff6dffefffedffeff02e0feff46e3feffee2affff0470ffff288affff368affff4c8affff288effff488effff628effff768effffba93ffffc296ffff3697ffff40afffff40fbffff6c42000082840000ac8b0000168c0000549c0000be9c00004aa00000bca00000cea00000eeb90000f6ba0000520c0100220e01003c130100fc180100b21c0100da2901007e2a010056320100
+      m_SelectedIDs: 6c430000
+      m_LastClickedID: 17260
+      m_ExpandedIDs: eaf8ffff40fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
