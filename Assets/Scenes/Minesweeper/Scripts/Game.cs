@@ -183,7 +183,7 @@ public class Game : MonoBehaviour
     }
 
     // private update function, called every frame the script is running. Used to look for button presses and to check if the game is over or has been paused.
-    // constant if statement looking for key presses. If "R" is pressed the "NewGame" function should run. If "Escape" is pressed and the pause boolean is not active, it, along with the pause gameobjects, become active. If "Escape" is pressed while the pause boolean is active, the Continue function runs, meaning the pause boolean and it's gameobjects become inactive again.
+    // constant if statement looking for key presses. If "R" is pressed the "NewGame" function should run. If "Escape" is pressed and the pause and gameOver booleans are not active, pause, along with the pause gameobjects, become active. If "Escape" is pressed while the pause boolean is active, the Continue function runs, meaning the pause boolean and it's gameobjects become inactive again.
     // another if statement checking if the "gameOver" and "pause" booleans. If both are false the timer, using a "deltaTime" variable built into the engine, continues to tick and gets converted into a readable time for the textbox display using the "FloorToInt" and "Format" C# functions. The script also continues to look for mouse buttons, with mouse button 0 (left click), triggering a reveal and the timer_increase boolean value to be set to true, marking the moment the player reveals a cell as the moment the timer will start to increase, and mouse button 1 (right click), triggering a flag.
     // if either the "gameOver" or "pause" booleans become true, the timer and mouse button detection are disabled until they become false again.
     private void Update()
@@ -193,7 +193,7 @@ public class Game : MonoBehaviour
             NewGame();
         } else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!pause)
+            if (!gameOver && !pause)
             {
                 pause = true;
                 pauseVisuals.SetActive(true);
